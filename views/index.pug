@@ -1,0 +1,64 @@
+extends layout
+
+block layout-content
+    script(type='text/javascript' src="/js/index.js")
+
+    .form-row
+        .form-col.col-md-6
+            .container-fluid
+                .modal-content
+                    // Modal Header
+                    .modal-header
+                        h4#myModalLabel.modal-title Criptografar
+                    // Modal Body
+                    .modal-body
+                        form#form_criptografar(role='form', method='POST', action=actionCriptografar, data-action=actionCriptografar)
+                            div.form-group
+                                label Selecione o tipo de criptografia:
+                                select#tipoCriptografia.form-control
+                                    each tipo in tiposCriptografia
+                                        option(value=tipo.valor, selected=tipo.selected, data-tiposInformacao=tipo.data) #{tipo.descricao}
+                            div.form-group
+                                label Selecione o tipo de informação a ser criptografada:
+                                select#tipoInformacao.form-control
+                            div.form-group.hidden.texto.need-hidden
+                                input#texto.form-control(type='text', placeholder='Digite o texto para criptografar' name='texto')
+                            div.form-group.hidden.midia.need-hidden
+                                input#midia.form-control-file(type='file', placeholder='Selecione o arquivo para criptografar' name='midia')
+                            button.btn.btn-primary(type="submit", name="criptografar") Executar
+                    // Modal Footer
+                    .modal-footer.hidden
+                        div.form-group
+                            h5 Resultado
+                            textarea#resultadoCriptografia.form-control(name="resultado", rows="10", readonly="true")
+
+        .form-col.col-md-6
+            .container-fluid
+                .modal-content
+                    // Modal Header
+                    .modal-header
+                        h4#myModalLabel.modal-title Descriptografar
+                    // Modal Body
+                    .modal-body
+                        form#form_descriptografar(role='form', method='POST', action=actionDescriptografar, data-action=actionDescriptografar)
+                            div.form-group
+                                label Selecione o tipo de criptografia:
+                                select#tipoDescriptografia.form-control
+                                    each tipo in tiposCriptografia
+                                        option(value=tipo.valor, selected=tipo.selected, data-tiposinformacao=tipo.data) #{tipo.descricao}
+                            div.form-group
+                                label Selecione o tipo de informação a ser descriptografada:
+                                select#tipoInformacaoDescriptografia.form-control
+                            div.form-group.hidden.midiaDescriptografar
+                                label Selecione o tipo de mídia:
+                                select#tipoMidiaDescriptografia.form-control
+                            div.form-group.texto
+                                input#textoDescriptografar.form-control(type='text', placeholder='Digite o texto para descriptografar' name='texto')
+                            button.btn.btn-primary(type="submit", name="descriptografar") Executar
+                    // Modal Footer
+                    .modal-footer.hidden
+                        div.form-group
+                            h5 Resultado
+                            textarea#resultadoDescriptografia.form-control(name="resultado", rows="10", readonly="true")
+
+    //- p.foot.text-xs-center aa

@@ -1,0 +1,19 @@
+
+.hidden {
+    display: none;
+}
+
+.container, .container-fluid {
+    margin-top: 40px;
+}
+
+.col-md-6,
+.container,
+.container-fluid {
+    padding-right: .5rem !important;
+    padding-left: .5rem !important;
+}
+
+.modal-footer {
+    text-align: left !important;
+}
